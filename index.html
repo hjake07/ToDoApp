@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang ="en">
     <head>
+        <title>Listo</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="styles.css" rel="stylesheet">
@@ -12,20 +13,21 @@
             <nav class="navbar">
                 <div><div class= "topline"><input id="enterListName" class= "inline" type="text" placeholder="Enter List Name..."><input onclick="addList()" class="addnew inline" type="submit" value="+"></div>
                 <ul id="sideUl" class="list-group list-group-flush">
-                    <li onclick="shoppingList()" id= "sideShoppingList" class="list-group-item list-group-item-action list-group-item-primary">Shopping List</li>
-                    <li onclick="honeyDoList()" class="list-group-item list-group-item-action list-group-item-primary">Honey Do List</li>
-                    <li onclick="otherList()" class="list-group-item list-group-item-action list-group-item-primary">Other List</li>
+                    <div class="d-flex"><li onclick="shoppingList()" id= "sideShoppingList" class="list-group-item list-group-item-action list-group-item-primary">Shopping List</li><i onclick ="takeShoppingTrash()" id="shoppingTrashIcon" class="fa fa-trash red _10px sideList" aria-hidden="true"></i></div>
+                    <div class="d-flex"><li onclick="honeyDoList()" id="sideHoneyList" class="list-group-item list-group-item-action list-group-item-primary">Honey Do List</li><i onclick ="takeHoneyTrash()" id="honeyTrashIcon" class="fa fa-trash red _10px sideList" aria-hidden="true"></i></div>
+                    <div class="d-flex"><li onclick="otherList()" id="sideOtherList" class="list-group-item list-group-item-action list-group-item-primary">Other List</li><i onclick ="takeOtherTrash()" id="otherTrashIcon" class="fa fa-trash red _10px sideList" aria-hidden="true"></i></div>
                 </ul>
             </div>
 
-            Listo.com
+            Listo &#169;
             </nav>
             <div class="container-fluid">
                 <div class="row">
                     <div id="listSection" class="col">
-                        <div class="listHeadingSection"><h1 id="listOfToDos"></h1><div><i class="fa fa-trash red" aria-hidden="true"></i><i class="fa fa-plus green" aria-hidden="true"></div></i></div>
+                        <div class="listHeadingSection"><h1 id="listOfToDos"></h1></div>
                     <hr>
                         <ul id="ul" class="list-group">
+                            
                          <!----   <li id="li" class="list-group-item">Here</li> -->
                         </ul>
                     </div>

@@ -60,6 +60,12 @@ input {
     display: inline;
     width: fit-content;
 }
+input[type = submit] {
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(50, 156, 183);
+
+}
 .topline {
     display: flex;
     flex-wrap: nowrap;
@@ -69,6 +75,21 @@ i {
     padding: 15px;
     color: rgb(183, 183, 183)
 }
+._10px {
+    font-size: 10px;
+    width:fit-content;
+    padding: 5px;
+    display: inline;
+
+}
+#sideShoppingList, #sideHoneyList, #sideOtherList {
+    display: flex;
+    justify-content: space-between;
+}
+#honeyTrashIcon, #shoppingTrashIcon, #otherTrashIcon {
+    height: 20px;
+    margin:auto 10px;
+}
 #listOfToDos {
     font-size: 40px;
     margin: 10px;
@@ -77,30 +98,38 @@ i {
 .fullwidth {
     width: 100%;
 }
-.addnew {
+#addList {
+    text-align: center;
+    width: 50px;
     background-color: rgb(51, 194, 120);
     color: white;
-    border-radius: 3px;
+    border-radius: 3px; 
+    display: flex;
 }
 .listHeadingSection {
 display: flex;
 justify-content: space-between;
 }
-.green {
-    margin: 5px;
-    background-color: rgb(51, 194, 120);
-    border-radius: 10px;
-}
-.green:hover {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-}
 .red {
     margin: 5px;
     border-radius: 10px;
-    background-color: rgb(247, 80, 38);
+    background-color: rgb(247, 90, 38);
 }
 .red:hover {
     cursor: pointer;
+    background-color: rgb(212, 54, 54);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+.orange {
+    margin: 5px;
+    border-radius: 10px;
+    background-color: rgb(247, 184, 38);
+}
+.orange:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+#newShoppingList {
+    display: flex;
+    width: 50%;
 }
