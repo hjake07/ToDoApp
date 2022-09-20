@@ -3,6 +3,7 @@ const lists = {
     2: {name: 'Honey Do List'},
     3: {name: 'Other List'}
 };
+let newArray = [];
 let firstList = (lists[1]).name;
 let firstListArray = ["Bananas", "Oranges", "Steak", "Onion", "Bread"]
 let secondList = (lists[2]).name;
@@ -58,15 +59,19 @@ for (let i of firstListArray) {
      let input = document.createElement('input');
      input.type = "checkbox";                                                       //Putting Checkboxes in
      input.className = "checkbox";
-     input.setAttribute('id', 'inputBox')
+    
      li.prepend(input);
      //--------------------------------------------------
     }
-    let icon = document.createElement('i')
+   let icon = document.createElement('i')
     icon.className = "fa fa-pencil"
     icon.setAttribute('id', 'addList')
     ul.append(icon)
+    icon.setAttribute('onclick', 'addWithinShopping()')
+    icon.onclick = function() {addWithinShopping();
+    }
 }
+
 
 function honeyDoList(){
     function clear(){
@@ -125,10 +130,22 @@ function otherList(){
     }
 }
 function addList(){
+    function clear(){
+        document.getElementById('listOfToDos').innerHTML = "";
+        document.getElementById('ul').innerHTML = "";
+    }
+    clear();
+    let div = document.createElement('div');
+    div.className = 'd-flex'
     var li = document.createElement("li");                                                              // creates list
-    li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary";  // Adds the classes to list
+    li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList";  // Adds the classes to list
     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
-    sideUl.prepend(li);                                                                                 // puts Created list at front in Ul
+    sideUl.append(div);
+    div.appendChild(li)                                                                                  // puts Created list at front in Ul
+    let trashIcon = document.createElement('i');
+    trashIcon.className = "fa fa-trash red _10px sideList";
+    trashIcon.setAttribute('id', 'newTrash');
+    div.appendChild(trashIcon)                                                                                                    
    let listHeading = document.getElementById('enterListName').value;                                    // Gets value of input
     li.prepend(listHeading);                                                                             // Puts inputs value in list item
     let listh1 = document.getElementById('listOfToDos')                                                               
