@@ -157,6 +157,7 @@ function addList(){
     let trashIcon = document.createElement('i');
     trashIcon.className = "fa fa-trash red _10px sideList";
     trashIcon.setAttribute('id', 'newTrash');
+    trashIcon.setAttribute('onclick', 'takeNewTrash()')
     div.appendChild(trashIcon)                                                                                                    
    let listHeading = document.getElementById('enterListName').value;                                    // Gets value of input
     li.prepend(listHeading);                                                                             // Puts inputs value in list item
@@ -183,7 +184,7 @@ function takeShoppingTrash(){
         document.getElementById('ul').innerHTML = "";
         document.getElementById('sideShoppingList').remove();
         document.getElementById('shoppingTrashIcon').remove();
-     
+       
     }
     clear();
     
@@ -198,6 +199,7 @@ function takeHoneyTrash(){
         document.getElementById('ul').innerHTML = "";
         document.getElementById('sideHoneyList').remove();
         document.getElementById('honeyTrashIcon').remove();
+       
      
     }
     clear();
@@ -216,6 +218,15 @@ function takeOtherTrash(){
     clear();
     
 }
+function takeNewTrash(){
+    function clear(){
+        document.getElementById('listOfToDos').innerHTML = "";
+        document.getElementById('ul').innerHTML = "";
+        document.getElementById('addDiv').remove();
+        document.getElementById('newTrash').remove();
+    }
+    clear();
+}
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // The function for the green ADD pencil
 function addWithinShopping(){
@@ -233,7 +244,7 @@ function addWithinShopping(){
     thesubmitButton.setAttribute('onclick', 'submitButton()');console.log('three') 
     thesubmitButton.setAttribute('id', 'submitId')            //adds an onclick that runs submitInput function
     ul.append(thesubmitButton)                                            //appends submit button to Unordered list
-    
+   
   
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -260,6 +271,9 @@ function submitButton(){
        inputClear.remove()
 
     }
+    let inputBox = document.getElementById('inputBox');
+    console.log(`This is the inputBox here ${inputBox}`)
+    firstListArray.push(inputBox.value)
     removeinputsubmit();
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -272,3 +286,8 @@ else {
     console.log('False')
 }
 }
+// I need to customize this so the custom storage works on my listo project
+function save() {
+    localStorage.setItem('currentList', JSON.stringify(currentList)); 
+    localStorage.setItem('lists', JSON.stringify(lists));
+   }
