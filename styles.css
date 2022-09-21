@@ -66,6 +66,15 @@ input[type = submit] {
     background-color: rgb(50, 156, 183);
 
 }
+#submitId {
+    width: 20%;
+    margin: 5px;
+
+}
+#newShoppingList {
+    width: fit-content;
+    margin: 5px;
+}
 .topline {
     display: flex;
     flex-wrap: nowrap;

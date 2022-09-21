@@ -41,7 +41,8 @@ const currentList = {                                                  |
 -------------------------------------------------------------------------
 */
 //if(){}
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// Renders the ShoppingList
 function shoppingList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -73,8 +74,8 @@ for (let i of firstListArray) {
     icon.onclick = function() {addWithinShopping();
     }
 }
-
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// Renders the honeyDoList
 function honeyDoList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -103,6 +104,8 @@ function honeyDoList(){
     icon.setAttribute('onclick', 'addWithinShopping()')
 
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// Renders the otherList
 function otherList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -135,6 +138,8 @@ function otherList(){
     // icon.onclick = function() {addWithinShopping();
     // }
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// Function for adding lists on the sideUl
 function addList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -164,13 +169,13 @@ function addList(){
     icon.setAttribute('id', 'addList')
     ul.append(icon)
     icon.setAttribute('onclick', 'addWithinAdd()')
-    icon.onclick = function() {addWithinAdd();
+    icon.onclick = function() {addWithinShopping();
     }
+    console.log('all of this')
 }
-let inputBox = document.getElementById('inputBox');
-    if(inputBox === true) {
-        console.log("IT IS TRUE")
-    }
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// trash icon and function for ShoppingList
 function takeShoppingTrash(){
     console.log("IT WORKS");
     function clear(){
@@ -183,6 +188,9 @@ function takeShoppingTrash(){
     clear();
     
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// trash icon and function for HoneyDoList
+
 function takeHoneyTrash(){
     console.log("IT WORKS");
     function clear(){
@@ -195,6 +203,8 @@ function takeHoneyTrash(){
     clear();
     
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// trash icon and function for OtherList
 function takeOtherTrash(){
     console.log("IT WORKS");
     function clear(){
@@ -206,8 +216,8 @@ function takeOtherTrash(){
     clear();
     
 }
-
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// The function for the green ADD pencil
 function addWithinShopping(){
     console.log('this')
     let ul = document.getElementById('ul');
@@ -226,6 +236,8 @@ function addWithinShopping(){
     
   
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// The submit button under the lists
 function submitButton(){
     let theValue = document.getElementById('newShoppingList');
     let itemInner = theValue.value
@@ -250,4 +262,13 @@ function submitButton(){
     }
     removeinputsubmit();
 }
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+function notNamed(){
+let checkboxes = document.getElementById('inputBox');
+if(checkboxes === true){
+    console.log('True')
+}
+else {
+    console.log('False')
+}
+}
