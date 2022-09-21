@@ -10,6 +10,8 @@ let secondList = (lists[2]).name;
 let secondListArray = ["Change Lock", "Clean Car", "Go to Dump", "Paint Bedroom"]
 let thirdList = (lists[3]).name;
 let thirdListArray = ["First Item", "Second Item", "Third Item"]
+
+
 /*  --------------------------------------------------------------------
 const currentList = {                                                  |
     name: "Shopping List",                                             | 
@@ -98,6 +100,8 @@ function honeyDoList(){
     icon.className = "fa fa-pencil"
     icon.setAttribute('id', 'addList')
     ul.append(icon)
+    icon.setAttribute('onclick', 'addWithinShopping()')
+
 }
 function otherList(){
     function clear(){
@@ -121,13 +125,15 @@ function otherList(){
         li.prepend(input);
         //--------------------------------------------------
        }
+       let div = document.createElement('div');
        let icon = document.createElement('i')
     icon.className = "fa fa-pencil"
     icon.setAttribute('id', 'addList')
-    ul.append(icon)
+    ul.append(div)
+    div.appendChild(icon)
     icon.setAttribute('onclick', 'addWithinShopping()')
-    icon.onclick = function() {addWithinShopping();
-    }
+    // icon.onclick = function() {addWithinShopping();
+    // }
 }
 function addList(){
     function clear(){
@@ -136,7 +142,8 @@ function addList(){
     }
     clear();
     let div = document.createElement('div');
-    div.className = 'd-flex'
+    div.className = 'd-flex space'
+    div.setAttribute('id', 'addDiv')
     var li = document.createElement("li");                                                              // creates list
     li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList";  // Adds the classes to list
     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
@@ -152,7 +159,13 @@ function addList(){
     let listTitle = document.createElement('h1');                                                       // Creates h1 Element
     listTitle.innerHtml = listHeading;
     listh1.prepend(listHeading)
-   
+    let icon = document.createElement('i')
+    icon.className = "fa fa-pencil"
+    icon.setAttribute('id', 'addList')
+    ul.append(icon)
+    icon.setAttribute('onclick', 'addWithinAdd()')
+    icon.onclick = function() {addWithinAdd();
+    }
 }
 let inputBox = document.getElementById('inputBox');
     if(inputBox === true) {
@@ -193,22 +206,48 @@ function takeOtherTrash(){
     clear();
     
 }
+
+
 function addWithinShopping(){
     console.log('this')
-    let li = document.getElementById('li')                              //gets list
+    let ul = document.getElementById('ul');
+   // let icon = document.getElementById('addList');
     let newListInput = document.createElement('input');                 //creates input called newListInput
     newListInput.setAttribute('id', 'newShoppingList');                 //gives it an id
-    newListInput.setAttribute('type', "text");                          //Makes it a text input
-    ul.appendChild(newListInput);                                            //appends NewListInput to list
+    newListInput.setAttribute('type', "text"); 
+    console.log(newListInput)                         //Makes it a text input
+    ul.append(newListInput);                                          //appends NewListInput to list
     console.log('first test')            
-    let submitButton = document.createElement('input');                 //Creates another input
-    submitButton.setAttribute('type', 'submit'); console.log('second Test')      //Makes it a submit button
-    submitButton.setAttribute('onclick', 'submitInput();');console.log('three')             //adds an onclick that runs submitInput function
-    submitButton.append('ul')                                            //appends submit button to Unordered list
-    let inputsValue = newListInput.value;
-    function submitInput(){
-    thirdListArray.push(inputsValue)
-    console.log('end')
-    }
-    submitInput();
+    let thesubmitButton = document.createElement('input');                 //Creates another input
+    thesubmitButton.setAttribute('type', 'submit'); console.log('second Test')      //Makes it a submit button
+    thesubmitButton.setAttribute('onclick', 'submitButton()');console.log('three') 
+    thesubmitButton.setAttribute('id', 'submitId')            //adds an onclick that runs submitInput function
+    ul.append(thesubmitButton)                                            //appends submit button to Unordered list
+    
+  
 }
+function submitButton(){
+    let theValue = document.getElementById('newShoppingList');
+    let itemInner = theValue.value
+    let ul = document.getElementById('ul');
+    let li = document.createElement('li')
+    li.innerHTML = itemInner;
+    li.className = 'list-group-item';
+    ul.prepend(li)
+    console.log('listed')
+   
+    let input = document.createElement('input');
+    input.type = "checkbox";                                                       //Putting Checkboxes in
+    input.className = "checkbox";
+    input.setAttribute('id', 'inputBox')
+    li.prepend(input);
+    function removeinputsubmit(){
+       let submitClear = document.getElementById('submitId');
+       let inputClear =  document.getElementById('newShoppingList');
+       submitClear.remove()
+       inputClear.remove()
+
+    }
+    removeinputsubmit();
+}
+

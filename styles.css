@@ -82,7 +82,7 @@ i {
     display: inline;
 
 }
-#sideShoppingList, #sideHoneyList, #sideOtherList {
+#sideShoppingList, #sideHoneyList, #sideOtherList, .space {
     display: flex;
     justify-content: space-between;
 }
