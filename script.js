@@ -69,15 +69,26 @@ let thirdListArray = {
         document.createElement(localStorage.getItem('newListObject').text)
     }
     function checkboxIsFilled(){
-        let ul = document.getElementById('ul');
-        let checkboxes = document.getElementById('inputBox');
-        if(checkboxes === true) {
-         console.log('it\'s true')
-        }
-        else {
-         console.log('nah bruh')
-        }
-     }
+
+        render();
+        let checkboxes = document.getElementById('checkboxId');
+        if(checkboxes.checked === true) {
+            for(let i = 0; i < firstListArray.todo.length; i++){
+            let removeLists = document.getElementById('listItem');
+            removeLists.remove();
+    }
+}
+    else {
+        console.log('nah bruh')
+       }
+       //need to figure out what to set here
+   // localStorage.setItem('newListInput', newListInput);
+       
+    }
+    
+
+        
+      
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // function render(){
 // let listsHtml = `<ul class= "list-group"</ul>`
@@ -119,10 +130,12 @@ console.log(firstListArray.todo)
 for (let i of firstListArray.todo) {
      var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
      li.className += " list-group-item";
+     li.setAttribute('id', 'listItem')
      //------------------------------------------------------------------------------
      let input = document.createElement('input');
      input.type = "checkbox";                                                       //Putting Checkboxes in
      input.className = "checkbox";
+     input.setAttribute('id', 'checkboxId')
     
      li.prepend(input);
      //--------------------------------------------------
@@ -134,9 +147,6 @@ for (let i of firstListArray.todo) {
     icon.setAttribute('onclick', 'addWithinShopping()')
     icon.onclick = function() {addWithinShopping();
     }
-   function save() {
-    localStorage.setItem("newListInput", JSON.stringify(newListInput))
-   }
 
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -157,6 +167,8 @@ function honeyDoList(){
     for (let i of secondListArray.todo) {
         var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
         li.className += " list-group-item";
+     li.setAttribute('id', 'listItem')
+
         //------------------------------------------------------------------------------
         let input = document.createElement('input');
         input.type = "checkbox";                                                       //Putting Checkboxes in
@@ -164,6 +176,9 @@ function honeyDoList(){
         input.setAttribute('id', 'inputBox')
         li.prepend(input);
         //--------------------------------------------------
+        input.setAttribute('id', 'checkboxId')
+     
+
        }
        let icon = document.createElement('i')
     icon.className = "fa fa-pencil"
@@ -201,7 +216,11 @@ function otherList(){
         input.className = "checkbox";
         input.setAttribute('id', 'inputBox')
         li.prepend(input);
+     li.setAttribute('id', 'listItem')
+
         //--------------------------------------------------
+     input.setAttribute('id', 'checkboxId')
+
        }
        let div = document.createElement('div');
        let icon = document.createElement('i')
@@ -481,14 +500,6 @@ function submitButtonAdd(){
     console.log(newArray)
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-function notNamed(){
-let checkboxes = document.getElementById('inputBox');
-if(checkboxes === true){
-    console.log('True')
-}
-else {
-    console.log('False')
-}
-}
+
 
 
