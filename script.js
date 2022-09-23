@@ -1,24 +1,18 @@
-const lists = {
-    1: {name: 'Shopping List'},
-    2: {name: 'Honey Do List'},
-    3: {name: 'Other List'}
-};
+const lists = [
+    {name: 'Shopping List'},
+    {name: 'Honey Do List'},
+    {name: 'Other List'}
+];
+let newList = []
 let newArray = [];
-let firstList = (lists[1]).name;
-let firstListArray = ["Bananas", "Oranges", "Steak", "Onion", "Bread"]
-let secondList = (lists[2]).name;
-let secondListArray = ["Change Lock", "Clean Car", "Go to Dump", "Paint Bedroom"]
-let thirdList = (lists[3]).name;
-let thirdListArray = ["First Item", "Second Item", "Third Item"]
-
-
-/*  --------------------------------------------------------------------
-const currentList = {                                                  |
-    name: "Shopping List",                                             | 
-    todo: [                                                            | Recommended Code But First Trying My Own Method
-        {                                                              | 
-            text: 'Bananas',                                           | 
-            completed: false                                           | 
+let firstList = (lists[0].name);
+console.log(firstList)
+const firstListArray = {                                                 
+    name: "Shopping List",                                             
+    todo: [                                                            
+        {                                                              
+            text: 'Bananas',                                           
+            completed: false                                           
         },
         {
             text: 'Oranges',
@@ -38,11 +32,76 @@ const currentList = {                                                  |
         }
      ]
 }
--------------------------------------------------------------------------
-*/
-//if(){}
+let secondList = (lists[1].name);
+let secondListArray = {
+    name: "Honey Do List",
+    todo: [
+       { text: "Change Lock",
+         completed: false
+        } ,
+        { text: "Clean Car",
+          completed: false
+        } ,
+        { text: "Go to Dump", 
+          completed: false
+        } ,
+        { text: "Paint Bedroom",
+          completed: false
+}]}
+
+let thirdList = (lists[2].name);
+let thirdListArray = { 
+    name: 'Other List',
+    todo: [
+            {text: "First Item",
+             completed: false,
+            },
+            {text:"Second Item",
+             completed: false,
+            },
+            {text:"Third Item",
+              completed: false
+            }]}
+    let newListInput = document.createElement('input');                 //creates input called newListInput
+    newListInput.setAttribute('id', 'newShoppingList');                 //gives it an id
+    newListInput.setAttribute('type', "text"); 
+    function render(){
+        document.createElement(localStorage.getItem('newListObject').text)
+    }
+    function checkboxIsFilled(){
+        let ul = document.getElementById('ul');
+        let checkboxes = document.getElementById('inputBox');
+        if(checkboxes === true) {
+         console.log('it\'s true')
+        }
+        else {
+         console.log('nah bruh')
+        }
+     }
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// function render(){
+// let listsHtml = `<ul class= "list-group"</ul>`
+// lists.forEach((list) => {
+// listsHtml += `<li class="list-group-item">${list.name}</li>`
+// });
+// listsHtml += `</ul>`;
+// document.getElementById('sideUl').innerHTML = listsHtml;
+// document.getElementById('listOfToDos').innerHTML = firstListArray.name;
+// let todosHtml = `<ul class = "list-group-flush">`;
+// firstListArray.todos.forEach(() => {
+// todosHtml += `<li class = "list-group-item"> ${todo.text}</li>`;
+// } );
+// document.getElementById('ul').innerHTML = todosHtml;
+// function save() {
+//     localStorage.setItem('currentList', JSON.stringify(currentList)); 
+//     localStorage.setItem('lists', JSON.stringify(lists));
+//    }
+//    save();
+// }
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the ShoppingList
+
 function shoppingList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -50,13 +109,15 @@ function shoppingList(){
     }
     clear();
     let listH1 = document.getElementById('listOfToDos');
-let listTitle = document.createElement('h1');
-listTitle.innerHTML = "Shopping List";
-listH1.prepend(listTitle);
+    listH1.innerHTML = firstList;
+    listH1.setAttribute('onclick', "checkboxIsFilled()")
+  
+render();
 
 var ul = document.getElementById('ul')
-for (let i of firstListArray) {
-     var li = document.createElement("li"); li.innerHTML = i; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
+console.log(firstListArray.todo)
+for (let i of firstListArray.todo) {
+     var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
      li.className += " list-group-item";
      //------------------------------------------------------------------------------
      let input = document.createElement('input');
@@ -73,6 +134,10 @@ for (let i of firstListArray) {
     icon.setAttribute('onclick', 'addWithinShopping()')
     icon.onclick = function() {addWithinShopping();
     }
+   function save() {
+    localStorage.setItem("newListInput", JSON.stringify(newListInput))
+   }
+
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the honeyDoList
@@ -82,12 +147,15 @@ function honeyDoList(){
         document.getElementById('ul').innerHTML = "";
     }
     clear();
-    let listh1 = document.getElementById('listOfToDos');
-    let listTitle = document.createElement('h1');
-    listTitle.innerHTML = "Honey Do List";
-    listh1.prepend(listTitle);
-    for (let i of secondListArray) {
-        var li = document.createElement("li"); li.innerHTML = i; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
+    render();
+    let listH1 = document.getElementById('listOfToDos');
+
+    listH1.innerHTML = secondList;
+    // let listTitle = document.createElement('h1');
+    // listTitle.innerHTML = secondListArray.name;
+    // listh1.prepend(listTitle);
+    for (let i of secondListArray.todo) {
+        var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
         li.className += " list-group-item";
         //------------------------------------------------------------------------------
         let input = document.createElement('input');
@@ -101,24 +169,31 @@ function honeyDoList(){
     icon.className = "fa fa-pencil"
     icon.setAttribute('id', 'addList')
     ul.append(icon)
-    icon.setAttribute('onclick', 'addWithinShopping()')
-
+    icon.setAttribute('onclick', 'addWithinHoney()')
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the otherList
 function otherList(){
+
+   
+    
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
      
     }
     clear();
-    let listh1 = document.getElementById('listOfToDos');
-    let listTitle = document.createElement('h1');
-    listTitle.innerHTML = "Other List";
-    listh1.prepend(listTitle);
-    for (let i of thirdListArray) {
-        var li = document.createElement("li"); li.innerHTML = i; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
+    render();
+
+    let listH1 = document.getElementById('listOfToDos');
+    
+    listH1.innerHTML = thirdList;
+
+    // let listTitle = document.createElement('h1');
+    // listTitle.innerHTML = thirdListArray.name;
+    // listh1.prepend(listTitle);
+    for (let i of thirdListArray.todo) {
+        var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
         li.className += " list-group-item";
         //------------------------------------------------------------------------------
         let input = document.createElement('input');
@@ -134,7 +209,8 @@ function otherList(){
     icon.setAttribute('id', 'addList')
     ul.append(div)
     div.appendChild(icon)
-    icon.setAttribute('onclick', 'addWithinShopping()')
+    icon.setAttribute('onclick', 'addWithinOther()')
+    
     // icon.onclick = function() {addWithinShopping();
     // }
 }
@@ -146,20 +222,36 @@ function addList(){
         document.getElementById('ul').innerHTML = "";
     }
     clear();
+    render();
+    document.createElement(localStorage.getItem('listHeading'))
+    for (let i of newArray.todo) {
+        var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
+        li.className += " list-group-item";
+        //------------------------------------------------------------------------------
+        let input = document.createElement('input');
+        input.type = "checkbox";                                                       //Putting Checkboxes in
+        input.className = "checkbox";
+        input.setAttribute('id', 'inputBox')
+        li.prepend(input);
+        //--------------------------------------------------
+       }
     let div = document.createElement('div');
     div.className = 'd-flex space'
     div.setAttribute('id', 'addDiv')
+   
+    console.log(newList)
     var li = document.createElement("li");                                                              // creates list
-    li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList";  // Adds the classes to list
+    li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
     sideUl.append(div);
-    div.appendChild(li)                                                                                  // puts Created list at front in Ul
+    div.appendChild(li)                                                                                // puts Created list at front in Ul
     let trashIcon = document.createElement('i');
     trashIcon.className = "fa fa-trash red _10px sideList";
     trashIcon.setAttribute('id', 'newTrash');
     trashIcon.setAttribute('onclick', 'takeNewTrash()')
     div.appendChild(trashIcon)                                                                                                    
-   let listHeading = document.getElementById('enterListName').value;                                    // Gets value of input
+   let listHeading = document.getElementById('enterListName').value; 
+   newList.push(listHeading)                                  // Gets value of input
     li.prepend(listHeading);                                                                             // Puts inputs value in list item
     let listh1 = document.getElementById('listOfToDos')                                                               
     let listTitle = document.createElement('h1');                                                       // Creates h1 Element
@@ -170,10 +262,10 @@ function addList(){
     icon.setAttribute('id', 'addList')
     ul.append(icon)
     icon.setAttribute('onclick', 'addWithinAdd()')
-    icon.onclick = function() {addWithinShopping();
     }
     console.log('all of this')
-}
+
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // trash icon and function for ShoppingList
@@ -186,7 +278,6 @@ function takeShoppingTrash(){
         document.getElementById('shoppingTrashIcon').remove();
        
     }
-    clear();
     
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -202,7 +293,6 @@ function takeHoneyTrash(){
        
      
     }
-    clear();
     
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -215,7 +305,6 @@ function takeOtherTrash(){
         document.getElementById('sideOtherList').remove();
         document.getElementById('otherTrashIcon').remove();
     }
-    clear();
     
 }
 function takeNewTrash(){
@@ -225,31 +314,64 @@ function takeNewTrash(){
         document.getElementById('addDiv').remove();
         document.getElementById('newTrash').remove();
     }
-    clear();
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // The function for the green ADD pencil
 function addWithinShopping(){
-    console.log('this')
     let ul = document.getElementById('ul');
    // let icon = document.getElementById('addList');
-    let newListInput = document.createElement('input');                 //creates input called newListInput
-    newListInput.setAttribute('id', 'newShoppingList');                 //gives it an id
-    newListInput.setAttribute('type', "text"); 
+    
     console.log(newListInput)                         //Makes it a text input
-    ul.append(newListInput);                                          //appends NewListInput to list
-    console.log('first test')            
+   ul.append(newListInput);                                          //appends NewListInput to list           
     let thesubmitButton = document.createElement('input');                 //Creates another input
-    thesubmitButton.setAttribute('type', 'submit'); console.log('second Test')      //Makes it a submit button
-    thesubmitButton.setAttribute('onclick', 'submitButton()');console.log('three') 
+    thesubmitButton.setAttribute('type', 'submit');    //Makes it a submit button
+    thesubmitButton.setAttribute('onclick', 'submitButtonShop()'); 
     thesubmitButton.setAttribute('id', 'submitId')            //adds an onclick that runs submitInput function
     ul.append(thesubmitButton)                                            //appends submit button to Unordered list
-   
+  
+}
+function addWithinHoney(){
+    let ul = document.getElementById('ul');
+   // let icon = document.getElementById('addList');
+    
+    console.log(newListInput)                         //Makes it a text input
+   ul.append(newListInput);                                          //appends NewListInput to list           
+    let thesubmitButton = document.createElement('input');                 //Creates another input
+    thesubmitButton.setAttribute('type', 'submit');    //Makes it a submit button
+    thesubmitButton.setAttribute('onclick', 'submitButtonHoney()'); 
+    thesubmitButton.setAttribute('id', 'submitId')            //adds an onclick that runs submitInput function
+    ul.append(thesubmitButton)                                            //appends submit button to Unordered list
+  
+}
+function addWithinOther(){
+    let ul = document.getElementById('ul');
+   // let icon = document.getElementById('addList');
+    
+    console.log(newListInput)                         //Makes it a text input
+   ul.append(newListInput);                                          //appends NewListInput to list           
+    let thesubmitButton = document.createElement('input');                 //Creates another input
+    thesubmitButton.setAttribute('type', 'submit');    //Makes it a submit button
+    thesubmitButton.setAttribute('onclick', 'submitButtonOther()'); 
+    thesubmitButton.setAttribute('id', 'submitId')            //adds an onclick that runs submitInput function
+    ul.append(thesubmitButton)                                            //appends submit button to Unordered list
+  
+}
+function addWithinAdd(){
+    let ul = document.getElementById('ul');
+   // let icon = document.getElementById('addList');
+    
+    console.log(newListInput)                         //Makes it a text input
+   ul.append(newListInput);                                          //appends NewListInput to list           
+    let thesubmitButton = document.createElement('input');                 //Creates another input
+    thesubmitButton.setAttribute('type', 'submit');    //Makes it a submit button
+    thesubmitButton.setAttribute('onclick', 'submitButtonAdd()'); 
+    thesubmitButton.setAttribute('id', 'submitId')            //adds an onclick that runs submitInput function
+    ul.append(thesubmitButton)                                            //appends submit button to Unordered list
   
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // The submit button under the lists
-function submitButton(){
+function submitButtonShop(){
     let theValue = document.getElementById('newShoppingList');
     let itemInner = theValue.value
     let ul = document.getElementById('ul');
@@ -257,8 +379,10 @@ function submitButton(){
     li.innerHTML = itemInner;
     li.className = 'list-group-item';
     ul.prepend(li)
-    console.log('listed')
-   
+    localStorage.setItem('newListInput', newListInput);
+  
+   let newlistObject = {text: `${itemInner}`, completed: false}
+   firstListArray.todo.push(newlistObject)
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
@@ -271,10 +395,90 @@ function submitButton(){
        inputClear.remove()
 
     }
-    let inputBox = document.getElementById('inputBox');
-    console.log(`This is the inputBox here ${inputBox}`)
-    firstListArray.push(inputBox.value)
     removeinputsubmit();
+    console.log(firstListArray)
+}
+function submitButtonOther(){
+    let theValue = document.getElementById('newShoppingList');
+    let itemInner = theValue.value
+    let ul = document.getElementById('ul');
+    let li = document.createElement('li')
+    li.innerHTML = itemInner;
+    li.className = 'list-group-item';
+    ul.prepend(li)
+    localStorage.setItem('newListInput', newListInput);
+  
+   let newlistObject = {text: `${itemInner}`, completed: false}
+   thirdListArray.todo.push(newlistObject)
+    let input = document.createElement('input');
+    input.type = "checkbox";                                                       //Putting Checkboxes in
+    input.className = "checkbox";
+    input.setAttribute('id', 'inputBox')
+    li.prepend(input);
+    function removeinputsubmit(){
+       let submitClear = document.getElementById('submitId');
+       let inputClear =  document.getElementById('newShoppingList');
+       submitClear.remove()
+       inputClear.remove()
+
+    }
+    removeinputsubmit();
+    console.log(thirdListArray)
+}
+function submitButtonHoney(){
+    let theValue = document.getElementById('newShoppingList');
+    let itemInner = theValue.value
+    let ul = document.getElementById('ul');
+    let li = document.createElement('li')
+    li.innerHTML = itemInner;
+    li.className = 'list-group-item';
+    ul.prepend(li)
+    localStorage.setItem('newListInput', newListInput);
+  
+   let newlistObject = {text: `${itemInner}`, completed: false}
+   secondListArray.todo.push(newlistObject)
+    let input = document.createElement('input');
+    input.type = "checkbox";                                                       //Putting Checkboxes in
+    input.className = "checkbox";
+    input.setAttribute('id', 'inputBox')
+    li.prepend(input);
+    function removeinputsubmit(){
+       let submitClear = document.getElementById('submitId');
+       let inputClear =  document.getElementById('newShoppingList');
+       submitClear.remove()
+       inputClear.remove()
+
+    }
+    removeinputsubmit();
+    console.log(secondListArray)
+}
+function submitButtonAdd(){
+    let theValue = document.getElementById('newShoppingList');
+    let itemInner = theValue.value
+    let ul = document.getElementById('ul');
+    let li = document.createElement('li')
+    li.innerHTML = itemInner;
+    li.className = 'list-group-item';
+    ul.prepend(li)
+    localStorage.setItem('newListInput', newListInput);
+    localStorage.setItem('newList', newList);
+  
+   let newlistObject = {text: `${itemInner}`, completed: false}
+   newArray.push(newlistObject)
+    let input = document.createElement('input');
+    input.type = "checkbox";                                                       //Putting Checkboxes in
+    input.className = "checkbox";
+    input.setAttribute('id', 'inputBox')
+    li.prepend(input);
+    function removeinputsubmit(){
+       let submitClear = document.getElementById('submitId');
+       let inputClear =  document.getElementById('newShoppingList');
+       submitClear.remove()
+       inputClear.remove()
+
+    }
+    removeinputsubmit();
+    console.log(newArray)
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 function notNamed(){
@@ -286,8 +490,5 @@ else {
     console.log('False')
 }
 }
-// I need to customize this so the custom storage works on my listo project
-function save() {
-    localStorage.setItem('currentList', JSON.stringify(currentList)); 
-    localStorage.setItem('lists', JSON.stringify(lists));
-   }
+
+
