@@ -62,29 +62,48 @@ let thirdListArray = {
             {text:"Third Item",
               completed: false
             }]}
+// may need to add an animation with these
+{/* <div class="success-checkmark">
+  <div class="check-icon">
+    <span class="icon-line line-tip"></span>
+    <span class="icon-line line-long"></span>
+    <div class="icon-circle"></div>
+    <div class="icon-fix"></div>
+  </div>
+</div> */}
+
+
+
+
     let newListInput = document.createElement('input');                 //creates input called newListInput
     newListInput.setAttribute('id', 'newShoppingList');                 //gives it an id
     newListInput.setAttribute('type', "text"); 
     function render(){
         document.createElement(localStorage.getItem('newListObject').text)
     }
-    function checkboxIsFilled(){
-
-        render();
-        let checkboxes = document.getElementById('checkboxId');
-        if(checkboxes.checked === true) {
-            for(let i = 0; i < firstListArray.todo.length; i++){
-            let removeLists = document.getElementById('listItem');
-            removeLists.remove();
-    }
-}
-    else {
-        console.log('nah bruh')
-       }
-       //need to figure out what to set here
-   // localStorage.setItem('newListInput', newListInput);
-       
-    }
+    window.setInterval(function(){
+        function checkboxIsFilled(){
+            let checkboxes = document.getElementById('checkboxId');
+            if(checkboxes.checked === true) {
+                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
+                window.setInterval(function(){
+                    
+                    checkboxes.parentElement.remove();
+                }, 1000)
+                
+          
+        }
+    
+    
+        else {
+            console.log('nah bruh')
+           }
+        
+        }
+        checkboxIsFilled();
+      }, 500);
+  
+    
     
 
         
@@ -121,7 +140,6 @@ function shoppingList(){
     clear();
     let listH1 = document.getElementById('listOfToDos');
     listH1.innerHTML = firstList;
-    listH1.setAttribute('onclick', "checkboxIsFilled()")
   
 render();
 
@@ -242,18 +260,19 @@ function addList(){
     }
     clear();
     render();
+  
     document.createElement(localStorage.getItem('listHeading'))
-    for (let i of newArray.todo) {
-        var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
-        li.className += " list-group-item";
-        //------------------------------------------------------------------------------
-        let input = document.createElement('input');
-        input.type = "checkbox";                                                       //Putting Checkboxes in
-        input.className = "checkbox";
-        input.setAttribute('id', 'inputBox')
-        li.prepend(input);
-        //--------------------------------------------------
-       }
+    // for (let i of newArray.todo) {
+    //     var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
+    //     li.className += " list-group-item";
+    //     //------------------------------------------------------------------------------
+    //     let input = document.createElement('input');
+    //     input.type = "checkbox";                                                       //Putting Checkboxes in
+    //     input.className = "checkbox";
+    //     input.setAttribute('id', 'inputBox')
+    //     li.prepend(input);
+    //     //--------------------------------------------------
+    //    }
     let div = document.createElement('div');
     div.className = 'd-flex space'
     div.setAttribute('id', 'addDiv')
@@ -270,19 +289,20 @@ function addList(){
     trashIcon.setAttribute('onclick', 'takeNewTrash()')
     div.appendChild(trashIcon)                                                                                                    
    let listHeading = document.getElementById('enterListName').value; 
+   let listh1 = document.getElementById('listOfToDos')                                                               
+   let listTitle = document.createElement('h1');                                                       // Creates h1 Element
+   listTitle.innerHtml = listHeading;
+   listh1.prepend(listHeading)
+   let icon = document.createElement('i')
+   icon.className = "fa fa-pencil"
+   icon.setAttribute('id', 'addList')
+   ul.append(icon)
+   icon.setAttribute('onclick', 'addWithinAdd()')
+
    newList.push(listHeading)                                  // Gets value of input
     li.prepend(listHeading);                                                                             // Puts inputs value in list item
-    let listh1 = document.getElementById('listOfToDos')                                                               
-    let listTitle = document.createElement('h1');                                                       // Creates h1 Element
-    listTitle.innerHtml = listHeading;
-    listh1.prepend(listHeading)
-    let icon = document.createElement('i')
-    icon.className = "fa fa-pencil"
-    icon.setAttribute('id', 'addList')
-    ul.append(icon)
-    icon.setAttribute('onclick', 'addWithinAdd()')
+    
     }
-    console.log('all of this')
 
 
 
