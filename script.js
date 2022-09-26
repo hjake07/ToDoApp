@@ -81,6 +81,7 @@ let thirdListArray = {
     function render(){
         document.createElement(localStorage.getItem('newListObject').text)
     }
+    
     window.setInterval(function(){
         function checkboxIsFilled(){
             let checkboxes = document.getElementById('checkboxId');
@@ -94,9 +95,8 @@ let thirdListArray = {
           
         }
     
-    
         else {
-            console.log('nah bruh')
+            console.log('Boxes Not Checked!')
            }
         
         }
@@ -252,37 +252,17 @@ function otherList(){
     // }
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-// Function for adding lists on the sideUl
-function addList(){
-    function clear(){
-        document.getElementById('listOfToDos').innerHTML = "";
-        document.getElementById('ul').innerHTML = "";
-    }
-    clear();
-    render();
-  
-    document.createElement(localStorage.getItem('listHeading'))
-    // for (let i of newArray.todo) {
-    //     var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
-    //     li.className += " list-group-item";
-    //     //------------------------------------------------------------------------------
-    //     let input = document.createElement('input');
-    //     input.type = "checkbox";                                                       //Putting Checkboxes in
-    //     input.className = "checkbox";
-    //     input.setAttribute('id', 'inputBox')
-    //     li.prepend(input);
-    //     //--------------------------------------------------
-    //    }
+//Function for adding lists on the sideUl
+
+function addTheList (){
     let div = document.createElement('div');
     div.className = 'd-flex space'
     div.setAttribute('id', 'addDiv')
-   
-    console.log(newList)
     var li = document.createElement("li");                                                              // creates list
     li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
     sideUl.append(div);
-    div.appendChild(li)                                                                                // puts Created list at front in Ul
+    div.appendChild(li)  
     let trashIcon = document.createElement('i');
     trashIcon.className = "fa fa-trash red _10px sideList";
     trashIcon.setAttribute('id', 'newTrash');
@@ -298,13 +278,114 @@ function addList(){
    icon.setAttribute('id', 'addList')
    ul.append(icon)
    icon.setAttribute('onclick', 'addWithinAdd()')
-
-   newList.push(listHeading)                                  // Gets value of input
-    li.prepend(listHeading);                                                                             // Puts inputs value in list item
-    
+   newList.push(listHeading)                                 
+   console.log(listHeading)
+    li.prepend(listHeading); 
+}
+function selectList(){
+    function clear(){
+        document.getElementById('listOfToDos').innerHTML = "";
+        document.getElementById('ul').innerHTML = "";
     }
+    clear();
+    render();
+                                                                                      
+   let listHeading = document.getElementById('enterListName').value; 
+   let listh1 = document.getElementById('listOfToDos')                                                               
+   let listTitle = document.createElement('h1');                                                       // Creates h1 Element
+   listTitle.innerHtml = listHeading;
+   listh1.prepend(listHeading)
+   let icon = document.createElement('i')
+   icon.className = "fa fa-pencil"
+   icon.setAttribute('id', 'addList')
+  
+   icon.setAttribute('onclick', 'addWithinAdd()')
+   let li = document.createElement('li')
+   ul.append(li)
+//    newList.push(listHeading)                                 
+    // li.prepend(listHeading);                                                                   // Puts inputs value in list item
+    li.prepend(newArray[0].text)
+    li.className += " list-group-item";
+    li.setAttribute('id','listItem')
+    let input = document.createElement('input');
+        input.type = "checkbox";                                                       //Putting Checkboxes in
+        input.className = "checkbox";
+        input.setAttribute('id', 'inputBox')
+        li.prepend(input);
+    ul.append(icon)
+    // for(let i = 0; i < newArray.length; i++) {
+    //     var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li); 
+    //     li.className += " list-group-item";
+    //     console.log('within for looop')
+    //     li.setAttribute('id','listItem')
+      
 
 
+    // }
+
+    window.setInterval(function(){
+        function checkboxIsFilled(){
+            let checkboxes = document.getElementById('inputBox');
+            if(checkboxes.checked === true) {
+                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
+                window.setInterval(function(){
+                    
+                    checkboxes.parentElement.remove();
+                }, 5000)
+                
+          
+        }
+    
+        else {
+            console.log('Boxes Not Checked!')
+           }
+        
+        }
+        checkboxIsFilled();
+      }, 500);
+  
+}
+function addList(){
+    function clear(){
+        document.getElementById('listOfToDos').innerHTML = "";
+        document.getElementById('ul').innerHTML = "";
+    }
+    clear();
+    render();
+   
+    
+
+    let div = document.createElement('div');
+    div.className = 'd-flex space'
+    div.setAttribute('id', 'addDiv')
+    var li = document.createElement("li");                                                              // creates list
+    li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
+    li.setAttribute('onclick', 'selectList()')
+    let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
+    sideUl.append(div);
+    div.appendChild(li)  
+    let trashIcon = document.createElement('i');
+    trashIcon.className = "fa fa-trash red _10px sideList";
+    trashIcon.setAttribute('id', 'newTrash');
+    trashIcon.setAttribute('onclick', 'takeNewTrash()')
+    div.appendChild(trashIcon)                                                                                                    
+   let listHeading = document.getElementById('enterListName').value; 
+   let listh1 = document.getElementById('listOfToDos')                                                               
+   let listTitle = document.createElement('h1');                                                       // Creates h1 Element
+   listTitle.innerHtml = listHeading;
+   listh1.prepend(listHeading)
+   let icon = document.createElement('i')
+   icon.className = "fa fa-pencil"
+   icon.setAttribute('id', 'addList')
+   ul.append(icon)
+   icon.setAttribute('onclick', 'addWithinAdd()')
+   newList.push(listHeading)                                 
+   console.log(listHeading)
+    li.prepend(listHeading);                                                                   // Puts inputs value in list item
+
+
+// addWithinAdd();
+}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // trash icon and function for ShoppingList
@@ -517,7 +598,6 @@ function submitButtonAdd(){
 
     }
     removeinputsubmit();
-    console.log(newArray)
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
