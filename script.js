@@ -300,11 +300,11 @@ function selectList(){
    icon.setAttribute('id', 'addList')
   
    icon.setAttribute('onclick', 'addWithinAdd()')
+   for(let i = 0; i < newArray.length; i++){
    let li = document.createElement('li')
-   ul.append(li)
-//    newList.push(listHeading)                                 
-    // li.prepend(listHeading);                                                                   // Puts inputs value in list item
+   ul.append(li)                                                                   // Puts inputs value in list item
     li.prepend(newArray[0].text)
+    console.log(newArray[0].text)
     li.className += " list-group-item";
     li.setAttribute('id','listItem')
     let input = document.createElement('input');
@@ -312,6 +312,7 @@ function selectList(){
         input.className = "checkbox";
         input.setAttribute('id', 'inputBox')
         li.prepend(input);
+   }
     ul.append(icon)
     // for(let i = 0; i < newArray.length; i++) {
     //     var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li); 
