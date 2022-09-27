@@ -75,6 +75,8 @@ let thirdListArray = {
 
 
 
+
+
     let newListInput = document.createElement('input');                 //creates input called newListInput
     newListInput.setAttribute('id', 'newShoppingList');                 //gives it an id
     newListInput.setAttribute('type', "text"); 
@@ -254,34 +256,35 @@ function otherList(){
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 //Function for adding lists on the sideUl
 
-function addTheList (){
-    let div = document.createElement('div');
-    div.className = 'd-flex space'
-    div.setAttribute('id', 'addDiv')
-    var li = document.createElement("li");                                                              // creates list
-    li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
-    let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
-    sideUl.append(div);
-    div.appendChild(li)  
-    let trashIcon = document.createElement('i');
-    trashIcon.className = "fa fa-trash red _10px sideList";
-    trashIcon.setAttribute('id', 'newTrash');
-    trashIcon.setAttribute('onclick', 'takeNewTrash()')
-    div.appendChild(trashIcon)                                                                                                    
-   let listHeading = document.getElementById('enterListName').value; 
-   let listh1 = document.getElementById('listOfToDos')                                                               
-   let listTitle = document.createElement('h1');                                                       // Creates h1 Element
-   listTitle.innerHtml = listHeading;
-   listh1.prepend(listHeading)
-   let icon = document.createElement('i')
-   icon.className = "fa fa-pencil"
-   icon.setAttribute('id', 'addList')
-   ul.append(icon)
-   icon.setAttribute('onclick', 'addWithinAdd()')
-   newList.push(listHeading)                                 
-   console.log(listHeading)
-    li.prepend(listHeading); 
-}
+// function addTheList (){
+//     let div = document.createElement('div');
+//     div.className = 'd-flex space'
+//     div.setAttribute('id', 'addDiv')
+//     var li = document.createElement("li");                                                              // creates list
+//     li.setAttribute('id', 'newSideList')
+//     li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
+//     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
+//     sideUl.append(div);
+//     div.appendChild(li)  
+//     let trashIcon = document.createElement('i');
+//     trashIcon.className = "fa fa-trash red _10px sideList";
+//     trashIcon.setAttribute('id', 'newTrash');
+//     trashIcon.setAttribute('onclick', 'takeNewTrash()')
+//     div.appendChild(trashIcon)                                                                                                    
+//    let listHeading = document.getElementById('enterListName').value; 
+//    let listh1 = document.getElementById('listOfToDos')                                                               
+//    let listTitle = document.createElement('h1');                                                       // Creates h1 Element
+//    listTitle.innerHtml = listHeading;
+//    listh1.prepend(listHeading)
+//    let icon = document.createElement('i')
+//    icon.className = "fa fa-pencil"
+//    icon.setAttribute('id', 'addList')
+//    ul.append(icon)
+//    icon.setAttribute('onclick', 'addWithinAdd()')
+//    newList.push(listHeading)                                 
+//    console.log(listHeading)
+//     li.prepend(listHeading); 
+// }
 function selectList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -303,8 +306,7 @@ function selectList(){
    for(let i = 0; i < newArray.length; i++){
    let li = document.createElement('li')
    ul.append(li)                                                                   // Puts inputs value in list item
-    li.prepend(newArray[0].text)
-    console.log(newArray[0].text)
+    li.prepend(newArray[i].text)
     li.className += " list-group-item";
     li.setAttribute('id','listItem')
     let input = document.createElement('input');
@@ -323,29 +325,8 @@ function selectList(){
 
 
     // }
-
-    window.setInterval(function(){
-        function checkboxIsFilled(){
-            let checkboxes = document.getElementById('inputBox');
-            if(checkboxes.checked === true) {
-                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
-                window.setInterval(function(){
-                    
-                    checkboxes.parentElement.remove();
-                }, 5000)
-                
-          
-        }
-    
-        else {
-            console.log('Boxes Not Checked!')
-           }
-        
-        }
-        checkboxIsFilled();
-      }, 500);
-  
 }
+   
 function addList(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -362,6 +343,7 @@ function addList(){
     var li = document.createElement("li");                                                              // creates list
     li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
     li.setAttribute('onclick', 'selectList()')
+    li.setAttribute('id', 'newSideList')
     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
     sideUl.append(div);
     div.appendChild(li)  
@@ -391,14 +373,16 @@ function addList(){
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // trash icon and function for ShoppingList
 function takeShoppingTrash(){
-    console.log("IT WORKS");
     function clear(){
+    console.log("IT WORKS");
+
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
         document.getElementById('sideShoppingList').remove();
         document.getElementById('shoppingTrashIcon').remove();
        
     }
+    clear();
     
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -414,7 +398,7 @@ function takeHoneyTrash(){
        
      
     }
-    
+    clear();
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // trash icon and function for OtherList
@@ -426,15 +410,17 @@ function takeOtherTrash(){
         document.getElementById('sideOtherList').remove();
         document.getElementById('otherTrashIcon').remove();
     }
-    
+    clear();
 }
 function takeNewTrash(){
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
-        document.getElementById('addDiv').remove();
+        document.getElementById('newSideList').remove();
         document.getElementById('newTrash').remove();
     }
+    clear();
+
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // The function for the green ADD pencil
@@ -600,6 +586,7 @@ function submitButtonAdd(){
     }
     removeinputsubmit();
 }
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
