@@ -312,10 +312,12 @@ function selectList(){
     let input = document.createElement('input');
         input.type = "checkbox";                                                       //Putting Checkboxes in
         input.className = "checkbox";
-        input.setAttribute('id', 'inputBox')
+        input.setAttribute('id', 'checkboxId')
         li.prepend(input);
    }
     ul.append(icon)
+
+  
     // for(let i = 0; i < newArray.length; i++) {
     //     var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li); 
     //     li.className += " list-group-item";
@@ -365,7 +367,7 @@ function addList(){
    newList.push(listHeading)                                 
    console.log(listHeading)
     li.prepend(listHeading);                                                                   // Puts inputs value in list item
-
+   
 
 // addWithinAdd();
 }
