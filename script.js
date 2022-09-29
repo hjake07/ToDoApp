@@ -3,7 +3,7 @@ const lists = [
     {name: 'Honey Do List'},
     {name: 'Other List'}
 ];
-let newList = []
+let newList = [];
 let newArray = [];
 let firstList = (lists[0].name);
 console.log(firstList)
@@ -80,7 +80,7 @@ let thirdListArray = {
     let newListInput = document.createElement('input');                 //creates input called newListInput
     newListInput.setAttribute('id', 'newShoppingList');                 //gives it an id
     newListInput.setAttribute('type', "text"); 
-    function render(){
+    function save(){
         document.createElement(localStorage.getItem('newListObject').text)
     }
     
@@ -103,7 +103,7 @@ let thirdListArray = {
         
         }
         checkboxIsFilled();
-      }, 500);
+      }, 2000);
   
     
     
@@ -135,6 +135,7 @@ let thirdListArray = {
 // Renders the ShoppingList
 
 function shoppingList(){
+let currentList = firstListArray.todo;
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
@@ -143,11 +144,11 @@ function shoppingList(){
     let listH1 = document.getElementById('listOfToDos');
     listH1.innerHTML = firstList;
   
-render();
+save();
 
 var ul = document.getElementById('ul')
-console.log(firstListArray.todo)
-for (let i of firstListArray.todo) {
+console.log(currentList)
+for (let i of currentList) {
      var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
      li.className += " list-group-item";
      li.setAttribute('id', 'listItem')
@@ -172,19 +173,20 @@ for (let i of firstListArray.todo) {
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the honeyDoList
 function honeyDoList(){
+    currentList = secondListArray.todo
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
     }
     clear();
-    render();
+    save();
     let listH1 = document.getElementById('listOfToDos');
 
     listH1.innerHTML = secondList;
     // let listTitle = document.createElement('h1');
     // listTitle.innerHTML = secondListArray.name;
     // listh1.prepend(listTitle);
-    for (let i of secondListArray.todo) {
+    for (let i of currentList) {
         var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
         li.className += " list-group-item";
      li.setAttribute('id', 'listItem')
@@ -193,7 +195,7 @@ function honeyDoList(){
         let input = document.createElement('input');
         input.type = "checkbox";                                                       //Putting Checkboxes in
         input.className = "checkbox";
-        input.setAttribute('id', 'inputBox')
+        input.setAttribute('id', 'checkboxId')
         li.prepend(input);
         //--------------------------------------------------
         input.setAttribute('id', 'checkboxId')
@@ -213,12 +215,13 @@ function otherList(){
    
     
     function clear(){
+        currentList = thirdListArray.todo;
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
      
     }
     clear();
-    render();
+    save();
 
     let listH1 = document.getElementById('listOfToDos');
     
@@ -227,14 +230,14 @@ function otherList(){
     // let listTitle = document.createElement('h1');
     // listTitle.innerHTML = thirdListArray.name;
     // listh1.prepend(listTitle);
-    for (let i of thirdListArray.todo) {
+    for (let i of currentList) {
         var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
         li.className += " list-group-item";
         //------------------------------------------------------------------------------
         let input = document.createElement('input');
         input.type = "checkbox";                                                       //Putting Checkboxes in
         input.className = "checkbox";
-        input.setAttribute('id', 'inputBox')
+        input.setAttribute('id', 'checkboxId')
         li.prepend(input);
      li.setAttribute('id', 'listItem')
 
@@ -286,12 +289,13 @@ function otherList(){
 //     li.prepend(listHeading); 
 // }
 function selectList(){
+    currentList = newArray;
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
     }
     clear();
-    render();
+    save();
                                                                                       
    let listHeading = document.getElementById('enterListName').value; 
    let listh1 = document.getElementById('listOfToDos')                                                               
@@ -303,10 +307,10 @@ function selectList(){
    icon.setAttribute('id', 'addList')
   
    icon.setAttribute('onclick', 'addWithinAdd()')
-   for(let i = 0; i < newArray.length; i++){
+   for(let i = 0; i < currentList.length; i++){
    let li = document.createElement('li')
    ul.append(li)                                                                   // Puts inputs value in list item
-    li.prepend(newArray[i].text)
+    li.prepend(currentList[i].text)
     li.className += " list-group-item";
     li.setAttribute('id','listItem')
     let input = document.createElement('input');
@@ -335,7 +339,7 @@ function addList(){
         document.getElementById('ul').innerHTML = "";
     }
     clear();
-    render();
+    save();
    
     
 
@@ -495,7 +499,7 @@ function submitButtonShop(){
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
-    input.setAttribute('id', 'inputBox')
+    input.setAttribute('id','checkboxId')
     li.prepend(input);
     function removeinputsubmit(){
        let submitClear = document.getElementById('submitId');
@@ -522,7 +526,7 @@ function submitButtonOther(){
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
-    input.setAttribute('id', 'inputBox')
+    input.setAttribute('id', 'checkboxId')
     li.prepend(input);
     function removeinputsubmit(){
        let submitClear = document.getElementById('submitId');
@@ -549,7 +553,7 @@ function submitButtonHoney(){
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
-    input.setAttribute('id', 'inputBox')
+    input.setAttribute('id', 'checkboxId')
     li.prepend(input);
     function removeinputsubmit(){
        let submitClear = document.getElementById('submitId');
@@ -577,7 +581,7 @@ function submitButtonAdd(){
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
-    input.setAttribute('id', 'inputBox')
+    input.setAttribute('id', 'checkboxId')
     li.prepend(input);
     function removeinputsubmit(){
        let submitClear = document.getElementById('submitId');
