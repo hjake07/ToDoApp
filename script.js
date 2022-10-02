@@ -1,10 +1,14 @@
+//Required: Users can edit tasks. 2 points
+//Required: my animation may count may not
+//Requred: Users can create any number of To-Do lists and give them a name 2 points
+//Above are unfinished criteria 20/(19) points worth are finished already
 const lists = [
     {name: 'Shopping List'},
     {name: 'Honey Do List'},
     {name: 'Other List'}
 ];
 let newList = [];
-let newArray = [];
+let newArray = [[],[],[],[]];
 let firstList = (lists[0].name);
 console.log(firstList)
 const firstListArray = {                                                 
@@ -117,6 +121,39 @@ let thirdListArray = {
 //    save();
 // }
 
+
+
+function taskTrash(){
+document.getElementById('taskTrash').parentElement.remove()
+}
+function taskEdit(){
+
+let editText = document.createElement('input');
+editText.setAttribute('type','text')
+editText.setAttribute('id','editText')
+let editButton = document.createElement('input');
+editButton.setAttribute('type','submit')
+editButton.setAttribute('id','editButton')
+editButton.setAttribute('onclick', 'editList()')
+editButton.append('this')
+document.getElementById('listItem').append(editText)
+document.getElementById('listItem').append(editButton)
+//add These (editText);
+//add These (editButton);
+
+}
+function editList(){
+ let list = document.getElementById('listItem')
+ list.innerHTML = editText.value
+ console.log(list)
+
+let checkbox = document.getElementById('checkboxId')
+let edit = document.getElementById('taskEdit')
+let trash = document.getElementById('taskTrash')
+list.prepend(checkbox)
+list.append(edit)
+list.append(trash)
+}
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the ShoppingList
 function loopList(){
@@ -128,9 +165,23 @@ for (let i of currentList) {
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
-    input.setAttribute('id', 'checkboxId')
-   
+    input.setAttribute('id', 'checkboxId');
+    input.style.position = "relative"
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', "taskTrash()")
+    trash.setAttribute('id', "taskTrash")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', 'taskEdit()')
+    edit.setAttribute('id', 'taskEdit')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
     li.prepend(input);
+    li.append(edit);
+    li.append(trash)
     //--------------------------------------------------
    }
 }
@@ -199,40 +250,9 @@ function otherList(){
     div.appendChild(icon)
     icon.setAttribute('onclick', 'addWithinOther()')
 }
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-//Function for adding lists on the sideUl
 
-// function addTheList (){
-//     let div = document.createElement('div');
-//     div.className = 'd-flex space'
-//     div.setAttribute('id', 'addDiv')
-//     var li = document.createElement("li");                                                              // creates list
-//     li.setAttribute('id', 'newSideList')
-//     li.className += " list-group-item list-group-item list-group-item-action list-group-item-primary sideList" // Adds the classes to list
-//     let sideUl = document.getElementById('sideUl');                                                     // Gets Ul (list's Parent Element)
-//     sideUl.append(div);
-//     div.appendChild(li)  
-//     let trashIcon = document.createElement('i');
-//     trashIcon.className = "fa fa-trash red _10px sideList";
-//     trashIcon.setAttribute('id', 'newTrash');
-//     trashIcon.setAttribute('onclick', 'takeNewTrash()')
-//     div.appendChild(trashIcon)                                                                                                    
-//    let listHeading = document.getElementById('enterListName').value; 
-//    let listh1 = document.getElementById('listOfToDos')                                                               
-//    let listTitle = document.createElement('h1');                                                       // Creates h1 Element
-//    listTitle.innerHtml = listHeading;
-//    listh1.prepend(listHeading)
-//    let icon = document.createElement('i')
-//    icon.className = "fa fa-pencil"
-//    icon.setAttribute('id', 'addList')
-//    ul.append(icon)
-//    icon.setAttribute('onclick', 'addWithinAdd()')
-//    newList.push(listHeading)                                 
-//    console.log(listHeading)
-//     li.prepend(listHeading); 
-// }
 function selectList(){
-    currentList = newArray;
+    currentList = newArray[0];
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
         document.getElementById('ul').innerHTML = "";
@@ -275,21 +295,20 @@ function addList(){
     trashIcon.setAttribute('id', 'newTrash');
     trashIcon.setAttribute('onclick', 'takeNewTrash()')
     div.appendChild(trashIcon)                                                                                                    
-   let listHeading = document.getElementById('enterListName').value; 
-   let listh1 = document.getElementById('listOfToDos')                                                               
-   let listTitle = document.createElement('h1');                                                       // Creates h1 Element
-   listTitle.innerHtml = listHeading;
-   listh1.prepend(listHeading)
-   let icon = document.createElement('i')
-   icon.className = "fa fa-pencil"
-   icon.setAttribute('id', 'addList')
-   ul.append(icon)
-   icon.setAttribute('onclick', 'addWithinAdd()')
-   newList.push(listHeading)                                 
-   console.log(listHeading)
+    let listHeading = document.getElementById('enterListName').value; 
+    let listh1 = document.getElementById('listOfToDos')                                                               
+    let listTitle = document.createElement('h1');                                                       // Creates h1 Element
+    listTitle.innerHtml = listHeading;
+    listh1.prepend(listHeading)
+    let icon = document.createElement('i')
+    icon.className = "fa fa-pencil"
+    icon.setAttribute('id', 'addList')
+    ul.append(icon)
+    icon.setAttribute('onclick', 'addWithinAdd()')
+    newList.push(listHeading)                                 
+    console.log(listHeading)
     li.prepend(listHeading);                                                                   // Puts inputs value in list item
 }
-
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // trash icon and function for ShoppingList
 function takeShoppingTrash(){
@@ -491,7 +510,7 @@ function submitButtonAdd(){
     localStorage.setItem('newList', newList);
   
    let newlistObject = {text: `${itemInner}`, completed: false}
-   newArray.push(newlistObject)
+   newArray[0].push(newlistObject)
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
     input.className = "checkbox";
