@@ -74,27 +74,6 @@ let thirdListArray = {
         document.createElement(localStorage.getItem('newListObject').text)
     }
     
-    window.setInterval(function(){
-        function checkboxIsFilled(){
-            let checkboxes = document.getElementById('checkboxId');
-            if(checkboxes.checked === true) {
-                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
-                window.setInterval(function(){
-                    
-                    checkboxes.parentElement.remove();
-                }, 1000)
-                
-          
-        }
-    
-        else {
-            console.log('Boxes Not Checked!')
-           }
-        
-        }
-        checkboxIsFilled();
-      }, 2000);
-  
     
     
 
@@ -188,6 +167,28 @@ for (let i of currentList) {
 let currentList;
 let currentToDo;
 function shoppingList(){
+
+    window.setInterval(function(){
+        function checkboxIsFilled(){
+            let checkboxes = document.getElementById('checkboxId');
+            if(checkboxes.checked === true) {
+                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
+                window.setInterval(function(){
+                    
+                    checkboxes.parentElement.remove();
+                }, 3000)
+                
+          
+        }
+    
+        else {
+            console.log('Boxes Not Checked!')
+           }
+        
+        }
+        checkboxIsFilled();
+      }, 2000);
+  
     currentList = firstListArray.todo;
     currentToDo = firstList;
     function clear(){
@@ -212,6 +213,28 @@ loopList();
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the honeyDoList
 function honeyDoList(){
+
+    window.setInterval(function(){
+        function checkboxIsFilled(){
+            let checkboxes = document.getElementById('checkboxId');
+            if(checkboxes.checked === true) {
+                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
+                window.setInterval(function(){
+                    
+                    checkboxes.parentElement.remove();
+                }, 3000)
+                
+          
+        }
+    
+        else {
+            console.log('Boxes Not Checked!')
+           }
+        
+        }
+        checkboxIsFilled();
+      }, 2000);
+  
     currentList = secondListArray.todo
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
@@ -231,6 +254,28 @@ function honeyDoList(){
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the otherList
 function otherList(){
+
+    window.setInterval(function(){
+        function checkboxIsFilled(){
+            let checkboxes = document.getElementById('checkboxId');
+            if(checkboxes.checked === true) {
+                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
+                window.setInterval(function(){
+                    
+                    checkboxes.parentElement.remove();
+                }, 3000)
+                
+          
+        }
+    
+        else {
+            console.log('Boxes Not Checked!')
+           }
+        
+        }
+        checkboxIsFilled();
+      }, 2000);
+  
     function clear(){
         currentList = thirdListArray.todo;
         document.getElementById('listOfToDos').innerHTML = "";
@@ -252,6 +297,28 @@ function otherList(){
 }
 
 function selectList(){
+
+    window.setInterval(function(){
+        function checkboxIsFilled(){
+            let checkboxes = document.getElementById('checkboxId');
+            if(checkboxes.checked === true) {
+                checkboxes.parentElement.style.backgroundColor = "rgb(51, 194, 120)"
+                window.setInterval(function(){
+                    
+                    checkboxes.parentElement.remove();
+                }, 3000)
+                
+          
+        }
+    
+        else {
+            console.log('Boxes Not Checked!')
+           }
+        
+        }
+        checkboxIsFilled();
+      }, 2000);
+  
     currentList = newArray[0];
     function clear(){
         document.getElementById('listOfToDos').innerHTML = "";
