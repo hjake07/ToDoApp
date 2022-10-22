@@ -102,9 +102,37 @@ let thirdListArray = {
 
 
 
-function taskTrash(){
-document.getElementById('taskTrash').parentElement.remove()
+function taskTrash1(){
+document.getElementById('taskTrash1').parentElement.remove()
 }
+function taskTrash2(){
+document.getElementById('taskTrash2').parentElement.remove()
+}
+function taskTrash3(){
+document.getElementById('taskTrash3').parentElement.remove()
+}
+function taskTrash4(){
+document.getElementById('taskTrash4').parentElement.remove()
+}
+function taskTrash5(){
+document.getElementById('taskTrash5').parentElement.remove()
+}
+function taskTrash6(){
+document.getElementById('taskTrash6').parentElement.remove()
+}
+function taskTrash7(){
+document.getElementById('taskTrash7').parentElement.remove()
+}
+function taskTrash8(){
+document.getElementById('taskTrash8').parentElement.remove()
+}
+function taskTrash9(){
+document.getElementById('taskTrash9').parentElement.remove()
+}
+function taskTrash10(){
+document.getElementById('taskTrash10').parentElement.remove()
+}
+
 function taskEdit(){
 
 let editText = document.createElement('input');
@@ -117,6 +145,7 @@ editButton.setAttribute('onclick', 'editList()')
 editButton.append('this')
 document.getElementById('listItem').append(editText)
 document.getElementById('listItem').append(editButton)
+localStorage.setItem('listItem', listItem)
 //add These (editText);
 //add These (editButton);
 
@@ -136,10 +165,14 @@ list.append(trash)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the ShoppingList
 function loopList(){
-for (let i of currentList) {
-    var li = document.createElement("li"); li.innerHTML = i.text; ul.appendChild(li);   //Putting lists in as well ass filling them in with array
+    console.log(currentList)
+    let id = 0;
+for (let i = 0; i < currentList.length; i++) {
+    id++
+    var li = document.createElement("li"); li.innerHTML = currentList[i].text; ul.appendChild(li);   //Putting lists in as well as filling them in with array
     li.className += " list-group-item";
     li.setAttribute('id', 'listItem')
+    console.log(i)
     //------------------------------------------------------------------------------
     let input = document.createElement('input');
     input.type = "checkbox";                                                       //Putting Checkboxes in
@@ -148,8 +181,8 @@ for (let i of currentList) {
     input.style.position = "relative"
     let trash = document.createElement('i');
     trash.className = "fa fa-trash red _10px sideList";
-    trash.setAttribute('onclick', "taskTrash()")
-    trash.setAttribute('id', "taskTrash")
+    trash.setAttribute('onclick', `taskTrash${id}()`)
+    trash.setAttribute('id', "taskTrash"+ id)
     trash.style.position = "absolute"
     trash.style.right = "10px"
     let edit = document.createElement('i');
@@ -180,11 +213,6 @@ function shoppingList(){
                 
           
         }
-    
-        else {
-            console.log('Boxes Not Checked!')
-           }
-        
         }
         checkboxIsFilled();
       }, 2000);
@@ -226,11 +254,6 @@ function honeyDoList(){
                 
           
         }
-    
-        else {
-            console.log('Boxes Not Checked!')
-           }
-        
         }
         checkboxIsFilled();
       }, 2000);
@@ -267,11 +290,6 @@ function otherList(){
                 
           
         }
-    
-        else {
-            console.log('Boxes Not Checked!')
-           }
-        
         }
         checkboxIsFilled();
       }, 2000);
@@ -310,11 +328,6 @@ function selectList(){
                 
           
         }
-    
-        else {
-            console.log('Boxes Not Checked!')
-           }
-        
         }
         checkboxIsFilled();
       }, 2000);
