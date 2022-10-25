@@ -102,6 +102,11 @@ let thirdListArray = {
 
 
 
+
+// function taskTrash(id){
+//     document.getElementById(`taskTrash${id}`).parentElement.remove()
+// }
+
 function taskTrash1(){
 document.getElementById('taskTrash1').parentElement.remove()
 }
@@ -133,35 +138,345 @@ function taskTrash10(){
 document.getElementById('taskTrash10').parentElement.remove()
 }
 
-function taskEdit(){
 
+// function taskEdit(id) {
+//     let editText = document.createElement('input');
+//     editText.setAttribute('type','text')
+//     editText.setAttribute('id','editText')
+//     let editButton = document.createElement('input');
+//     editButton.setAttribute('type','submit')
+//     editButton.setAttribute('id','editButton')
+//     editButton.setAttribute('onclick', `editList(${id})`)
+//     document.getElementById('listItem1').append(editText)
+//     document.getElementById('listItem1').append(editButton)
+//     localStorage.setItem('listItem1', listItem1)    
+// }
+
+function taskEdit1(){
 let editText = document.createElement('input');
 editText.setAttribute('type','text')
 editText.setAttribute('id','editText')
 let editButton = document.createElement('input');
 editButton.setAttribute('type','submit')
 editButton.setAttribute('id','editButton')
-editButton.setAttribute('onclick', 'editList()')
-editButton.append('this')
-document.getElementById('listItem').append(editText)
-document.getElementById('listItem').append(editButton)
-localStorage.setItem('listItem', listItem)
-//add These (editText);
-//add These (editButton);
-
+editButton.setAttribute('onclick', 'editList1()')
+document.getElementById('listItem1').append(editText)
+document.getElementById('listItem1').append(editButton)
+localStorage.setItem('listItem1', listItem1)
 }
-function editList(){
- let list = document.getElementById('listItem')
+function taskEdit2(){
+let editText = document.createElement('input');
+editText.setAttribute('type','text')
+editText.setAttribute('id','editText')
+let editButton = document.createElement('input');
+editButton.setAttribute('type','submit')
+editButton.setAttribute('id','editButton')
+editButton.setAttribute('onclick', 'editList2()')
+document.getElementById('listItem2').append(editText)
+document.getElementById('listItem2').append(editButton)
+localStorage.setItem('listItem2', listItem2)
+}
+function taskEdit3(){
+let editText = document.createElement('input');
+editText.setAttribute('type','text')
+editText.setAttribute('id','editText')
+let editButton = document.createElement('input');
+editButton.setAttribute('type','submit')
+editButton.setAttribute('id','editButton')
+editButton.setAttribute('onclick', 'editList3()')
+document.getElementById('listItem3').append(editText)
+document.getElementById('listItem3').append(editButton)
+localStorage.setItem('listItem3', listItem3)
+}
+function taskEdit4(){
+let editText = document.createElement('input');
+editText.setAttribute('type','text')
+editText.setAttribute('id','editText')
+let editButton = document.createElement('input');
+editButton.setAttribute('type','submit')
+editButton.setAttribute('id','editButton')
+editButton.setAttribute('onclick', 'editList4()')
+document.getElementById('listItem4').append(editText)
+document.getElementById('listItem4').append(editButton)
+localStorage.setItem('listItem4', listItem4)
+}
+function taskEdit5(){
+let editText = document.createElement('input');
+editText.setAttribute('type','text')
+editText.setAttribute('id','editText')
+let editButton = document.createElement('input');
+editButton.setAttribute('type','submit')
+editButton.setAttribute('id','editButton')
+editButton.setAttribute('onclick', 'editList5()')
+document.getElementById('listItem5').append(editText)
+document.getElementById('listItem5').append(editButton)
+localStorage.setItem('listItem5', listItem5)
+}
+function taskEdit6(){
+let editText = document.createElement('input');
+editText.setAttribute('type','text')
+editText.setAttribute('id','editText')
+let editButton = document.createElement('input');
+editButton.setAttribute('type','submit')
+editButton.setAttribute('id','editButton')
+editButton.setAttribute('onclick', 'editList6()')
+document.getElementById('listItem6').append(editText)
+document.getElementById('listItem6').append(editButton)
+localStorage.setItem('listItem6', listItem6)
+}
+
+function editList1(){
+ let list = document.getElementById('listItem1')
  list.innerHTML = editText.value
  console.log(list)
-
-let checkbox = document.getElementById('checkboxId')
-let edit = document.getElementById('taskEdit')
-let trash = document.getElementById('taskTrash')
+ let trash = document.createElement('i');
+ trash.className = "fa fa-trash red _10px sideList";
+ trash.setAttribute('onclick', `taskTrash1()`)
+ trash.setAttribute('id', "taskTrash1")
+ trash.style.position = "absolute"
+ trash.style.right = "10px"
+ let edit = document.createElement('i');
+ edit.className = "fa fa-pencil edit _10px"
+ edit.setAttribute('onclick', `taskEdit1()`)
+ edit.setAttribute('id', 'taskEdit1')
+ edit.style.position = "absolute";
+ edit.style.right = "60px"
+let checkbox = document.createElement('input');
+checkbox.setAttribute('type', 'checkbox');
+checkbox.setAttribute('id', 'checkboxId');
 list.prepend(checkbox)
 list.append(edit)
 list.append(trash)
 }
+//---------------------------------------------------
+function editList2(){
+    let list = document.getElementById('listItem2')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash2()`)
+    trash.setAttribute('id', "taskTrash2()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit2()`)
+    edit.setAttribute('id', 'taskEdit2')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList3(){
+    let list = document.getElementById('listItem3')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash3()`)
+    trash.setAttribute('id', "taskTrash3()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit3()`)
+    edit.setAttribute('id', 'taskEdit3')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList4(){
+    let list = document.getElementById('listItem4')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash4()`)
+    trash.setAttribute('id', "taskTrash4()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit4()`)
+    edit.setAttribute('id', 'taskEdit4')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList5(){
+    let list = document.getElementById('listItem5')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash5()`)
+    trash.setAttribute('id', "taskTrash5()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit5()`)
+    edit.setAttribute('id', 'taskEdit5')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList6(){
+    let list = document.getElementById('listItem6')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash6()`)
+    trash.setAttribute('id', "taskTrash6()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit6()`)
+    edit.setAttribute('id', 'taskEdit6')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList7(){
+    let list = document.getElementById('listItem7')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash7()`)
+    trash.setAttribute('id', "taskTrash7()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit7()`)
+    edit.setAttribute('id', 'taskEdit7')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList8(){
+    let list = document.getElementById('listItem8')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash8()`)
+    trash.setAttribute('id', "taskTrash8()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit8()`)
+    edit.setAttribute('id', 'taskEdit8')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList9(){
+    let list = document.getElementById('listItem9')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash9()`)
+    trash.setAttribute('id', "taskTrash9()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit9()`)
+    edit.setAttribute('id', 'taskEdit9')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList10(){
+    let list = document.getElementById('listItem10')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash10()`)
+    trash.setAttribute('id', "taskTrash10()")
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit10()`)
+    edit.setAttribute('id', 'taskEdit10')
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkboxId');
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+}
+function editList(id){
+    let list = document.getElementById('listItem1')
+    list.innerHTML = editText.value
+    console.log(list)
+    let trash = document.createElement('i');
+    trash.className = "fa fa-trash red _10px sideList";
+    trash.setAttribute('onclick', `taskTrash()`)
+    trash.setAttribute('id', "taskTrash"+ id)
+    trash.style.position = "absolute"
+    trash.style.right = "10px"
+    let edit = document.createElement('i');
+    edit.className = "fa fa-pencil edit _10px"
+    edit.setAttribute('onclick', `taskEdit(${id})`)
+    edit.setAttribute('id', `taskEdit(${id})`)
+    edit.style.position = "absolute";
+    edit.style.right = "60px"
+   let checkbox = document.getElementById('checkboxId')
+   list.prepend(checkbox)
+   list.append(edit)
+   list.append(trash)
+   }
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Renders the ShoppingList
 function loopList(){
@@ -171,7 +486,7 @@ for (let i = 0; i < currentList.length; i++) {
     id++
     var li = document.createElement("li"); li.innerHTML = currentList[i].text; ul.appendChild(li);   //Putting lists in as well as filling them in with array
     li.className += " list-group-item";
-    li.setAttribute('id', 'listItem')
+    li.setAttribute('id', `listItem` + id)
     console.log(i)
     //------------------------------------------------------------------------------
     let input = document.createElement('input');
@@ -187,8 +502,8 @@ for (let i = 0; i < currentList.length; i++) {
     trash.style.right = "10px"
     let edit = document.createElement('i');
     edit.className = "fa fa-pencil edit _10px"
-    edit.setAttribute('onclick', 'taskEdit()')
-    edit.setAttribute('id', 'taskEdit')
+    edit.setAttribute('onclick', `taskEdit${id}()`)
+    edit.setAttribute('id', 'taskEdit' + id)
     edit.style.position = "absolute";
     edit.style.right = "60px"
     li.prepend(input);
